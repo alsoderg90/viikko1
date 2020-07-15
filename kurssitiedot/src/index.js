@@ -1,38 +1,62 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-const Hello = (props) => {
+const Header = (props) => {
+  return (
+    <h1>{props.course}</h1>
+  )
+}
+
+const Total = (props) => {
+  return (
+    <p> Number of exercises {props.sum} </p>
+  )
+}
+
+const Content = (props) => {
   return (
     <div>
-      <p>
-        Hello {props.name}, you are {props.age} years old      </p>
+    <Part part={props.part1} exercises={props.exercises1}/>
+    <Part part={props.part2} exercises={props.exercises2}/>
+    <Part part={props.part3} exercises={props.exercises3}/>
     </div>
   )
 }
 
-const Footer = () => {
+const Part = (props) => {
   return (
     <div>
-      greeting app created by 
-      <a href="https://github.com/mluukkai">mluukkai</a>
+    <p> {props.part} {props.exercises} </p>
     </div>
   )
 }
 
 const App = () => {
-  const nimi = 'Pekka'  
-  const ika = 10
+  const course = 'Half Stack application development'
+
+  const parts = [
+    {
+      name: 'Fundamentals of React',
+      exercises: 10
+    },
+    {
+      name: 'Using props to pass data',
+      exercises: 7
+    },
+    {
+      name: 'State of a component',
+      exercises: 14
+    }
+  ]
+
 
   return (
     <div>
-      <h1>Greetings</h1>
-      <Hello name="Maya" age={26 + 10} />      
-      <Hello name={nimi} age={ika} /> 
-      <Footer />   
+      <Header course={course} />
+      <Content part1={parts[0].name} part2={parts[1].name} part3={parts[2].name} exercises1={parts[0].exercises} exercises2={parts[1].exercises} exercises3={parts[2].exercises} />
+      <Total sum= {parts[0].exercises + parts[1].exercises + parts[2].exercises} />
     </div>
   )
 }
-
-
 
 ReactDOM.render(<App />, document.getElementById('root'))
