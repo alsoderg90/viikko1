@@ -20,20 +20,22 @@ const History = (props) => {
 const Statistics = (props) => {
   return ( 
   <table>
+  <tbody>
   <StatisticLine text="good" value ={props.value[0]} />
   <StatisticLine text="neutral" value ={props.value[1]} />
   <StatisticLine text="bad" value ={props.value[2]} />
   <StatisticLine text="all" value ={props.value[3]} />
   <StatisticLine text="average" value ={(props.value[0]*1 + props.value[1]*0 + props.value[2]*-1)/(props.value[3])} />
   <StatisticLine text="positive" value ={(props.value[0]/ props.value[3] *100) + ' %'} />
+  </tbody>
+  
   </table>
   )
 }
 
 const StatisticLine = (props) => {
   return (
-  <tr>
-  <td>{props.text}</td> <td>{props.value}</td>
+  <tr><td>{props.text}</td><td>{props.value}</td>
   </tr>
 
   )
